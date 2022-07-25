@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<table class="table table-bordered">
+    <h2 class="text-center"><u>moje wpisy</u></h2><br>
+
+    
+        
+   <thead>
+     <tr>
+       <th scope="col">Data</th>
+       <th scope="col">Tytuł</th>
+       <th scope="col">Treść</th>
+       <th>#</th>
+     </tr>
+   </thead>
+   <tbody>
+   
+    {% for post in all_posts %}
+        <tr>
+          
+            <td>{{ post.pub_date.strftime('%Y-%m-%d') }}</td>
+            <td>
+              <a href="{{ url_for('edit_entry', entry_id=post.id) }}"> {{ post.title }}</a>
+            </td>
+            <td>{{ post.body|truncate(100) }}</td>
+
+          <form class="form-inline my-2 my-lg-0" action="{{ url_for('remove_post', entry_id=post.id) }}" method="POST">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Delete</button>
+        </form>            
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+</body>
+{% endblock %}
+
+
