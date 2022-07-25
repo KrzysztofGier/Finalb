@@ -1,3 +1,3 @@
 # Final_project
 
-https://my-blog-mm.herokuapp.com/
+https://blogfinall.herokuapp.com/
